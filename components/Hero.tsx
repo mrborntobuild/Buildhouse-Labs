@@ -16,13 +16,13 @@ export const Hero: React.FC<HeroProps> = ({ onGetStartedClick }) => {
       </div>
 
       {/* Main Title */}
-      <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight mb-6 md:mb-8 leading-[1.2] md:leading-[1.1] text-white animate-fade-in-up delay-100">
+      <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight mb-6 md:mb-8 leading-[1.2] md:leading-[1.1] text-white animate-fade-in-up delay-100">
         The AI layer that powers <br />
         <span className="italic font-normal opacity-90 font-serif inline-block px-1 pb-1">service businesses.</span>
       </h1>
 
       {/* Subtitle */}
-      <p className="text-base md:text-xl text-white/60 max-w-2xl mb-10 md:mb-12 leading-relaxed animate-fade-in-up delay-200">
+      <p className="text-lg sm:text-xl md:text-xl text-white/60 max-w-2xl mb-10 md:mb-12 leading-relaxed animate-fade-in-up delay-200">
         We turn operational chaos into streamlined workflows—so you can serve more clients, better.
       </p>
 
