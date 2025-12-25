@@ -321,7 +321,7 @@ export const Features: React.FC = () => {
   return (
     <div className="w-full max-w-7xl mx-auto px-6 md:px-12">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8">
-        <h2 className="text-3xl md:text-5xl font-bold tracking-tight">Our Latest Builds</h2>
+        <h2 className="text-3xl md:text-5xl font-bold tracking-tight">Use Cases</h2>
         <div className="flex items-center gap-3">
           <button 
             onClick={() => scroll('left')}

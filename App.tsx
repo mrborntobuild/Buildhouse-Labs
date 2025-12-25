@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { Logos } from './components/Logos';
@@ -8,9 +8,11 @@ import { Features } from './components/Features';
 import { CaseStudies } from './components/CaseStudies';
 import { Footer } from './components/Footer';
 import { BackgroundRibbon } from './components/BackgroundRibbon';
-import { FramerBadge } from './components/FramerBadge';
+import { MultiStepForm } from './components/MultiStepForm';
 
 const App: React.FC = () => {
+  const [showForm, setShowForm] = useState(false);
+
   return (
     <div className="relative min-h-screen bg-black text-white selection:bg-indigo-500/30">
       {/* Iridescent background decoration */}
@@ -20,29 +22,28 @@ const App: React.FC = () => {
       </div>
 
       <div className="relative z-10 flex flex-col">
-        <Navbar />
+        <Navbar onGetStartedClick={() => setShowForm(true)} />
         
         <section className="min-h-screen flex flex-col items-center justify-center">
-          <Hero />
-          <Logos />
+          <Hero onGetStartedClick={() => setShowForm(true)} />
         </section>
 
         <section className="py-24">
           <Mission />
         </section>
 
-        <section className="pb-32">
+        <section id="use-cases" className="pb-32 scroll-mt-20">
           <Features />
         </section>
 
         <section className="pb-32">
-          <CaseStudies />
+          <CaseStudies onGetStartedClick={() => setShowForm(true)} />
         </section>
         
         <Footer />
       </div>
 
-      <FramerBadge />
+      {showForm && <MultiStepForm onClose={() => setShowForm(false)} />}
     </div>
   );
 };

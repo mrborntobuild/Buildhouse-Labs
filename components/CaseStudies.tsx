@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Leaf } from 'phosphor-react';
 
 const CaseStudyItem = ({ 
   quote, 
@@ -8,7 +9,9 @@ const CaseStudyItem = ({
   logoIcon, 
   reversed = false, 
   gradientClass,
-  isTymeless = false
+  isTymeless = false,
+  usePlayfair = false,
+  onGetStartedClick
 }: { 
   quote: string; 
   stats: { label: string; value: string }[]; 
@@ -17,6 +20,8 @@ const CaseStudyItem = ({
   reversed?: boolean;
   gradientClass: string;
   isTymeless?: boolean;
+  usePlayfair?: boolean;
+  onGetStartedClick?: () => void;
 }) => {
   return (
     <div className={`flex flex-col ${reversed ? 'lg:flex-row-reverse' : 'lg:flex-row'} items-center gap-12 lg:gap-24 py-16 md:py-28`}>
@@ -35,7 +40,10 @@ const CaseStudyItem = ({
           ))}
         </div>
 
-        <button className="px-8 py-3.5 bg-neutral-900 border border-white/10 hover:border-white/20 text-white rounded-full text-sm font-bold transition-all hover:bg-neutral-800 active:scale-95">
+        <button 
+          onClick={onGetStartedClick}
+          className="px-8 py-3.5 bg-neutral-900 border border-white/10 hover:border-white/20 text-white rounded-full text-sm font-bold transition-all hover:bg-neutral-800 active:scale-95"
+        >
           Get started
         </button>
       </div>
@@ -56,7 +64,13 @@ const CaseStudyItem = ({
              <div className="drop-shadow-2xl flex items-center justify-center">
               {logoIcon}
              </div>
-             <span className={`text-3xl tracking-tight text-white drop-shadow-xl ${isTymeless ? 'font-tymeless !font-normal' : 'md:text-4xl font-bold'}`}>
+             <span className={`text-4xl md:text-5xl tracking-tight text-white drop-shadow-xl ${
+               isTymeless 
+                 ? 'font-tymeless font-serif' 
+                 : usePlayfair 
+                   ? 'font-playfair font-medium' 
+                   : 'md:text-4xl font-bold'
+             }`}>
                {logo}
              </span>
           </div>
@@ -69,72 +83,50 @@ const CaseStudyItem = ({
   );
 };
 
-export const CaseStudies: React.FC = () => {
+export const CaseStudies: React.FC<{ onGetStartedClick?: () => void }> = ({ onGetStartedClick }) => {
   return (
     <div className="w-full max-w-7xl mx-auto px-6 md:px-12 py-12">
       <div className="text-center mb-12 md:mb-16">
         <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.1] max-w-4xl mx-auto">
           Built with Buildhouse
         </h2>
+        <p className="text-base md:text-lg text-white/60 mt-6 max-w-2xl mx-auto leading-relaxed">
+          We've built complete solutions for the challenges our clients face.
+        </p>
       </div>
 
       <div className="flex flex-col">
         {/* Tymeless Case Study */}
         <CaseStudyItem 
-          quote="Working with this AI platform helped us launch faster and smarter than ever before."
+          quote="It transformed how our staff connects with residents through preserved stories that create lasting impact."
           logo="Tymeless"
           isTymeless={true}
           logoIcon={(
-            <svg 
-              viewBox="0 0 256 256" 
-              className="w-10 h-10 md:w-11 md:h-11 text-primary" 
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <rect width="256" height="256" fill="none" />
-              <path 
-                d="M232,104a104.11,104.11,0,0,1-104,104,103.42,103.42,0,0,1-13.06-.82l-18.28,18.28a6,6,0,0,1-8.49-8.49l18.28-18.28A103.42,103.42,0,0,1,104.82,185.7,104.11,104.11,0,0,1,104,136c0-57.44,46.56-104,104-104a103.42,103.42,0,0,1,13.06.82l18.28-18.28a6,6,0,0,1,8.49,8.49l-18.28,18.28A103.42,103.42,0,0,1,231.18,55.3,104.11,104.11,0,0,1,232,104Z" 
-                fill="none" 
-                stroke="currentColor" 
-                strokeLinecap="round" 
-                strokeLinejoin="round" 
-                strokeWidth="12" 
-              />
-              <line 
-                x1="128" 
-                y1="136" 
-                x2="24" 
-                y2="224" 
-                fill="none" 
-                stroke="currentColor" 
-                strokeLinecap="round" 
-                strokeLinejoin="round" 
-                strokeWidth="12" 
-              />
-            </svg>
+            <Leaf weight="light" className="w-14 h-14 md:w-16 md:h-16 text-primary" />
           )}
           gradientClass="bg-[radial-gradient(circle_at_20%_20%,_#1a1a1a_0%,_#000000_100%)] after:absolute after:inset-0 after:bg-[radial-gradient(circle_at_80%_80%,_oklch(0.65_0.15_45),_transparent_60%)] after:opacity-10"
           stats={[
             { label: 'CONVERSION', value: '+50%' },
             { label: 'ROI', value: '+145%' }
           ]}
+          onGetStartedClick={onGetStartedClick}
         />
 
-        {/* Proline Case Study */}
+        {/* Purple Studio Case Study */}
         <CaseStudyItem 
           reversed
-          quote="We've seen a 40% drop in support tickets after integrating their AI assistant."
-          logo="Proline"
+          quote="Purple Studio transformed our workflow delivering cinema quality content faster while cutting costs."
+          logo="Purple Studio"
+          usePlayfair={true}
           logoIcon={(
-            <div className="flex flex-col gap-1.5 -rotate-12">
-              <div className="w-10 h-3 bg-white rounded-full translate-x-1 shadow-lg"></div>
-              <div className="w-10 h-3 bg-white rounded-full -translate-x-1 shadow-lg"></div>
-            </div>
+            <div className="w-12 h-12 bg-[#7C3AED] rounded-full shadow-[0_0_15px_rgba(124,58,237,0.4)]"></div>
           )}
-          gradientClass="bg-[linear-gradient(135deg,_#A7B5FF_0%,_#F3ACFF_45%,_#FFD68A_100%)]"
+          gradientClass="bg-[radial-gradient(circle_at_50%_50%,_#C4B5FD_0%,_#A78BFA_50%,_#8B5CF6_100%)]"
           stats={[
             { label: 'CONVERSION', value: '+120%' },
             { label: 'ROI', value: '+210%' }
           ]}
+          onGetStartedClick={onGetStartedClick}
         />
       </div>
     </div>

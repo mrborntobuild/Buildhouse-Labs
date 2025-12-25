@@ -18,7 +18,7 @@ export const Footer: React.FC = () => {
               </div>
             </div>
             <p className="text-white/40 text-sm md:text-base leading-relaxed">
-              Providing the underlying AI layer for clarity in business operations and clinical documentation.
+              We turn operational chaos into streamlined workflows—so you can serve more clients, better.
             </p>
           </div>
         </div>

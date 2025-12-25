@@ -2,7 +2,11 @@
 import React from 'react';
 import { Sparkles } from 'lucide-react';
 
-export const Hero: React.FC = () => {
+interface HeroProps {
+  onGetStartedClick: () => void;
+}
+
+export const Hero: React.FC<HeroProps> = ({ onGetStartedClick }) => {
   return (
     <div className="px-6 pt-24 pb-12 text-center max-w-4xl mx-auto flex flex-col items-center">
       {/* Badge */}
@@ -24,7 +28,10 @@ export const Hero: React.FC = () => {
 
       {/* Actions */}
       <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto animate-fade-in-up delay-300">
-        <button className="w-full sm:w-auto px-8 py-3.5 md:py-4 bg-white text-black rounded-full font-bold text-sm md:text-base hover:bg-white/90 transition-all shadow-lg shadow-white/5 active:scale-95">
+        <button 
+          onClick={onGetStartedClick}
+          className="w-full sm:w-auto px-8 py-3.5 md:py-4 bg-white text-black rounded-full font-bold text-sm md:text-base hover:bg-white/90 transition-all shadow-lg shadow-white/5 active:scale-95"
+        >
           Get started
         </button>
         <button className="w-full sm:w-auto px-8 py-3.5 md:py-4 bg-white/5 border border-white/10 text-white rounded-full font-bold text-sm md:text-base hover:bg-white/10 transition-all backdrop-blur-md active:scale-95">
